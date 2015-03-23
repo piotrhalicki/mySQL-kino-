@@ -73,7 +73,7 @@
 				<option value="karta">Karta</option>
 				<option value="przelew">Przelew</option></select><br>
 			<label>Data:</label><br>
-				<input type="text" name="data"><br>
+				<input type="text" name="data" placeholder="RRRR-MM-DD"><br>
 			<button type="submit" name="submit" value="platnosc">Wyślij</button><br><br>
 		</form>
 </fieldset>
@@ -123,9 +123,9 @@ $baseName = "kino";
 <?php
 
 $sql = "CREATE TABLE Kino (
-			id int,
- 			name varchar(255),
- 			address varchar(255), 
+			id int AUTO_INCREMENT NOT NULL,
+ 			name varchar(255) NOT NULL,
+ 			address TEXT, 
  			PRIMARY KEY (id))";
 
 $result = $conn->query($sql);
@@ -142,9 +142,9 @@ echo '<br>';
 
 
 $sql = "CREATE TABLE Film (
-			id int,
- 			name varchar(255),
- 			opis varchar(255),
+			id int AUTO_INCREMENT NOT NULL,
+ 			name varchar(255) NOT NULL,
+ 			opis TEXT,
  			PRIMARY KEY (id))";
 
 $result = $conn->query($sql);
@@ -161,9 +161,9 @@ echo '<br>';
 
 
 $sql = "CREATE TABLE Bilet (
-			id int,
- 			ilosc int,
- 			cena float(5,2),
+			id int AUTO_INCREMENT NOT NULL,
+ 			ilosc int NOT NULL DEFAULT 0,
+ 			cena float(5,2) NOT NULL DEFAULT 0.0,
  			PRIMARY KEY (id))";
 
 $result = $conn->query($sql);
@@ -180,7 +180,7 @@ echo '<br>';
 
 
 $sql = "CREATE TABLE Platnosc (
-			id int,
+			id int AUTO_INCREMENT NOT NULL,
  			typ varchar(20),
  			data date,
  			PRIMARY KEY (id))";
@@ -236,17 +236,17 @@ $result = $conn->query($sql);
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 	switch($_POST['submit']){
 		case "kino";
-			$sql = "INSERT INTO Kino (name) VALUES ('".$_POST['kino']."')";
+			$sql = "INSERT INTO Kino (name, address) VALUES ('".$_POST['nazwa']."', '".$_POST['adres']."')";
 				// , '".$."')";
 			break;
 		case "film";
-			$sql = "INSERT INTO Film (name) VALUES ('".$_POST['film']."')";
+			$sql = "INSERT INTO Film (name, opis) VALUES ('".$_POST['tytul']."', '".$_POST['opis']."')";
 			break;
 		case "bilet";
-			$sql = "INSERT INTO Bilet (ilosc) VALUES ('".$_POST['bilet']."')";
+			$sql = "INSERT INTO Bilet (ilosc, cena) VALUES ('".$_POST['ilosc']."', '".$_POST['cena']."')";
 			break;
 		case "platnosc";
-			$sql = "INSERT INTO Platnosc () VALUES ('".$_POST['platnosc']."')";
+			$sql = "INSERT INTO Platnosc (typ, data) VALUES ('".$_POST['formaZaplaty']."', '".$_POST['data']."')";
 			break;
 	}
 	
