@@ -94,14 +94,104 @@ $baseName = "kino";
 			echo '<br>';
 		}
 
-	$conn->close(); 	// zamykanie tabeli ZAWSZE na końcu - to logiczne!
-	$conn = null; 		// zamykanie tabeli ZAWSZE na końcu - to logiczne!
+
 
 ?>
 	<br>
 <hr>
 	<br>
+	
+	<h2>
+	Tworzenie tablicy 'Kino', 'Film', 'Bilet', 'Platnosc'.
+	</h2>
+	
+<?php
 
+$sql = "CREATE TABLE Kino (id int AUTO_INCREMENT,
+ 							name varchar(255),
+ 							adress varchar(255), 
+ 							PRIMARY KEY (id))";
+
+$result = $conn->query($sql);
+
+if ($result === TRUE) {
+	echo "Tabela Kino została utworzona";
+} else {
+	echo '<strong>', "Coś poszło nie tak: ", '</strong>', '<br>' .$conn->error;
+	echo '<br>';	
+}
+
+echo '<br>';
+
+$sql = "CREATE TABLE Film (id int,
+ 							name varchar(255),
+ 							opis varchar(255),
+ 							PRIMARY KEY (id))";
+
+$result = $conn->query($sql);
+
+if ($result === TRUE) {
+	echo "Tabela Film została utworzona";
+} else {
+	echo '<strong>', "Coś poszło nie tak: ", '</strong>', '<br>' .$conn->error;
+	echo '<br>';
+}
+
+echo '<br>';
+
+$sql = "CREATE TABLE Bilet (id int,
+ 							ilosc int,
+ 							cena float(5,2),
+ 							PRIMARY KEY (id))";
+
+$result = $conn->query($sql);
+
+if ($result === TRUE) {
+	echo "Tabela Bilet została utworzona";
+} else {
+	echo '<strong>', "Coś poszło nie tak: ", '</strong>', '<br>' .$conn->error;
+	echo '<br>';
+}
+
+echo '<br>';
+
+$sql = "CREATE TABLE Platnosc (id int,
+ 							typ varchar(20),
+ 							data date,
+ 							PRIMARY KEY (id))";
+
+$result = $conn->query($sql);
+
+if ($result === TRUE) {
+	echo "Tabela Płatność została utworzona";
+} else {
+	echo '<strong>', "Coś poszło nie tak: ", '</strong>', '<br>' .$conn->error;
+	echo '<br>';
+
+}
+
+$conn->close(); // zamykanie tabeli ZAWSZE na końcu - to logiczne!
+$conn = null; // zamykanie tabeli ZAWSZE na końcu - to logiczne!
+
+
+
+// zakomentowałem żeby za każdym razem nie tworzyć tablicy którą już utworzyłem
+
+	
+?>	
+	<br>
+	<br>
+<hr>
+	<br>		
+	
+	<h2>
+	Pobranie danych z formularza i dodanie ich do bazy:
+	</h2>
+
+	<br>
+<hr>
+	<br>	
+	
+	
 </body>
-
 </html>	
