@@ -21,56 +21,64 @@
 	<br>
 	
 <fieldset>
-<legend><strong><em>Dodawanie danych do bazy danych "KINO"</em></strong></legend>
+<legend><strong><em>Dodawanie danych do bazy danych "KINO"</em></strong></legend><br>
 
 <fieldset>
-<legend><strong><em>Kino</em></strong></legend>
+	<legend><strong><em>Kino</em></strong></legend><br>
 		<form action="index.php" method="POST">
-		<label>Nazwa:</label><br>
-		<input type="text" name="kino"> 	
-		<label>Adres:</label><br>	
-		<input type="text" name="kino">
-	<button type="submit" name="submit" value="kino">Wyślij</button>
-	</form>
+			<label>Nazwa:</label><br>
+				<input type="text" name="nazwa"><br> 	
+			<label>Adres:</label><br>	
+				<input type="text" name="adres"><br>
+			<button type="submit" name="submit" value="kino">Wyślij</button><br><br>
+		</form>
 </fieldset>	
 
 	<br>
 	
 <fieldset>
-<legend><strong><em>Film</em></strong></legend>
-	<form action="index.php" method="POST">
-	<label>Tytuł:</label><br>
-	<input type="text" name="film"><br>
-	<label>Opis:</label><br>
-	<input type="text" name="opis"><br>
-	<label>Rating:</label><br>
-	<input type="text" name="rating"><br>
-	<button type="submit" name="submit" value="film">Wyślij</button>
-	</form>
+	<legend><strong><em>Film</em></strong></legend><br>
+		<form action="index.php" method="POST">
+			<label>Tytuł:</label><br>
+				<input type="text" name="tytul"><br>
+			<label>Opis:</label><br>
+				<input type="text" name="opis"><br>
+			<label>Ocena:</label><br>
+				<input type="text" name="ocena"><br>
+			<button type="submit" name="submit" value="film">Wyślij</button><br><br>
+		</form>
 </fieldset>	
 	
 	<br>
 
 <fieldset>
-<legend><strong><em>Bilet</em></strong></legend>
-			<form action="index.php" method="POST">
-			<input type="text" name="bilet"> 
-			<button type="submit" name="submit" value="bilet">Wyślij</button>
-			</form>
-	</label>
+	<legend><strong><em>Bilet</em></strong></legend><br>
+		<form action="index.php" method="POST">
+			<label>Ilość:</label><br>		
+				<input type="text" name="ilosc"><br> 
+			<label>Cena:</label><br>
+				<input type="text" name="cena"><br>
+			<button type="submit" name="submit" value="bilet">Wyślij</button><br><br>
+		</form>
+</fieldset>
 	
 	<br>
 		
 <fieldset>
-<legend><strong><em>Płatność</em></strong></legend>
-			<form action="index.php" method="POST">
-			<input type="text" name="platnosc">
-			<button type="submit" name="submit" value="platnosc">Wyślij</button>
-			</form>
-	<br>			
-	</label>
-
-</fieldset>	
+	<legend><strong><em>Płatność</em></strong></legend><br>
+		<form action="index.php" method="POST">
+			<label>Forma zapłaty:</label><br>
+			<select name="formaZaplaty">
+				<option value="gotowka">Gotówka</option>
+				<option value="karta">Karta</option>
+				<option value="przelew">Przelew</option></select><br>
+			<label>Data:</label><br>
+				<input type="text" name="data"><br>
+			<button type="submit" name="submit" value="platnosc">Wyślij</button><br><br>
+		</form>
+</fieldset>
+<br>
+</fieldset>
 	
 	<br>
 
