@@ -236,11 +236,11 @@ $result = $conn->query($sql);
 if($_SERVER['REQUEST_METHOD'] === 'POST'){
 	switch($_POST['submit']){
 		case "kino";
-			$sql = "INSERT INTO Kino (name, address) VALUES ('".$_POST['nazwa']."', '".$_POST['adres']."')";
+			$sql = "INSERT INTO Kino (name, address) VALUES ('trim(".$_POST['nazwa'].")', 'trim(".$_POST['adres'].")')";
 				// , '".$."')";
 			break;
 		case "film";
-			$sql = "INSERT INTO Film (name, opis, ocena) VALUES ('".$_POST['tytul']."', '".$_POST['opis']."', '".$_POST['ocena']."')";
+			$sql = "INSERT INTO Film (name, opis, ocena) VALUES ('trim(".$_POST['tytul'].")', 'trim(".$_POST['opis'].")', '.$_POST['ocena'].')";
 			break;
 		case "bilet";
 			$sql = "INSERT INTO Bilet (ilosc, cena) VALUES ('".$_POST['ilosc']."', '".$_POST['cena']."')";
@@ -257,13 +257,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 		echo "Coś poszło nie tak: " .$sql. " - " .$conn->error;
 	};
 	
-
-
 }
-
-
-
-
 
 ?>
 	
