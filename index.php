@@ -240,7 +240,7 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 				// , '".$."')";
 			break;
 		case "film";
-			$sql = "INSERT INTO Film (name, opis) VALUES ('".$_POST['tytul']."', '".$_POST['opis']."')";
+			$sql = "INSERT INTO Film (name, opis, ocena) VALUES ('".$_POST['tytul']."', '".$_POST['opis']."', '".$_POST['ocena']."')";
 			break;
 		case "bilet";
 			$sql = "INSERT INTO Bilet (ilosc, cena) VALUES ('".$_POST['ilosc']."', '".$_POST['cena']."')";
@@ -263,10 +263,87 @@ if($_SERVER['REQUEST_METHOD'] === 'POST'){
 
 
 
-$conn->close(); // zamykanie tabeli ZAWSZE na końcu - to logiczne!
-$conn = null; // zamykanie tabeli ZAWSZE na końcu - to logiczne!
+
 
 ?>
+	
+	
+	<br>
+	<br>
+<hr>
+	<br>		
+	
+	<h2>
+	Wyświetlanie danych z bazy:
+	</h2>
+
+	<br>
+<hr>
+	<br>	
+<?php
+
+echo "Kina: ", '<br>';
+
+$sql = "SELECT * FROM Kino";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+	while($row = $result->fetch_assoc()) {
+		echo "Nazwa: ".$row["name"]. ", Adres: ".$row["address"]."<br>";
+	}
+}
+else {
+	echo "Brak kin w bazie danych";
+}
+
+
+echo "Filmy: ", '<br>';
+
+$sql = "SELECT * FROM Film";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+	while ($row = $result->fetch_assoc()) {
+		echo "Nazwa: ".$row["name"]. ", Opis: ".$row["opis"]. ", Ocena: ".$row["rating"]."<br>";
+	}
+}
+else {
+	echo "Brak filmów w bazie danych";
+}
+
+echo "Bilety: ", '<br>';
+
+$sql = "SELECT * FROM Bilet";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+	while ($row = $result->fetch_assoc()) {
+		echo "Ilość: ".$row["ilosc"]. ", Cena: ".$row["cena"]."<br>";
+	}
+}
+else {
+	echo "Brak biletów w bazie danych";
+}
+
+echo "Kina: ", '<br>';
+
+$sql = "SELECT * FROM Platnosc";
+$result = $conn->query($sql);
+
+if ($result->num_rows > 0) {
+	while ($row = $result->fetch_assoc()) {
+		echo "Typ: ".$row["typ"]. ", Data: ".$row["data"]."<br>";
+	}
+}
+else {
+	echo "Brak płatności w bazie danych";
+}
+
+
+$conn->close(); // zamykanie tabeli ZAWSZE na końcu - to logiczne!
+$conn = null; 	// zamykanie tabeli ZAWSZE na końcu - to logiczne!
+
+?>	
 	
 </body>
 </html>	
